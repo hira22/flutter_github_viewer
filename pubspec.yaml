@@ -1,0 +1,35 @@
+name: flutter_github_viewer
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_hooks:
+  hooks_riverpod:
+  riverpod_annotation:
+  freezed_annotation:
+  go_router:
+  intl:
+  graphql_flutter:
+  webview_flutter:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  build_verify:
+  freezed: 
+  json_serializable:
+  flutter_lints:
+  go_router_builder:
+  riverpod_generator:
+  riverpod_lint:
+
+flutter:
+  uses-material-design: true
