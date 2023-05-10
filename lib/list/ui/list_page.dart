@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../router.dart';
-import '../state/repos.dart';
+import '../state/list.dart';
 
-class ReposPage extends ConsumerWidget {
-  const ReposPage({super.key});
+class ListPage extends ConsumerWidget {
+  const ListPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final repos = ref.watch(reposProvider);
+    final items = ref.watch(fetchListProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GitHub Repositories'),
+        title: const Text('List Page'),
       ),
-      body: repos.when(
-        data: (repos) {
+      body: items.when(
+        data: (state) {
           return ListView.builder(
-            itemCount: repos.repos.length,
+            itemCount: state.items.length,
             itemBuilder: (context, index) {
-              final repo = repos.repos[index];
+              final item = state.items[index];
 
               return ListTile(
-                title: Text(repo.name),
-                subtitle: Text(repo.url),
-                onTap: () => RepoPageRoute(title: repo.name, url: repo.url).go(context),
+                title: Text(item.name),
+                subtitle: Text(item.url),
+                onTap: () => DetailPageRoute(title: item.name, url: item.url).go(context),
               );
             },
           );

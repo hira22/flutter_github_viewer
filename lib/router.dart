@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_github_viewer/repo/repo_page.dart';
-import 'package:flutter_github_viewer/repos/ui/repos_page.dart';
+import 'package:flutter_github_viewer/detail/detail_page.dart';
+import 'package:flutter_github_viewer/list/ui/list_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,33 +13,35 @@ GoRouter router(RouterRef ref) => GoRouter(
   debugLogDiagnostics: kDebugMode,
 );
 
-@TypedGoRoute<ReposPageRoute>(
+final $router = GoRouter(routes: $appRoutes, debugLogDiagnostics: kDebugMode);
+
+@TypedGoRoute<ListPageRoute>(
   path: '/',
   routes: [
-    TypedGoRoute<RepoPageRoute>(
-      path: 'repo/:title/:url',
+    TypedGoRoute<DetailPageRoute>(
+      path: 'detail/:title/:url',
     ),
   ],
 )
 
 @immutable
-class ReposPageRoute extends GoRouteData {
+class ListPageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const ReposPage();
+    return const ListPage();
   }
 }
 
 
 @immutable
-class RepoPageRoute extends GoRouteData {
+class DetailPageRoute extends GoRouteData {
   final String title;
   final String url;
 
-  const RepoPageRoute({required this.title, required this.url});
+  const DetailPageRoute({required this.title, required this.url});
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return RepoPage(title: title, url: url);
+    return DetailPage(title: title, url: url);
   }
 }

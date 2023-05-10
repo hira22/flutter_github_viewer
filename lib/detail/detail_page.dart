@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class RepoPage extends HookWidget {
+class DetailPage extends HookWidget {
   final String title;
   final String url;
 
-  const RepoPage({super.key, required this.title, required this.url});
+  const DetailPage({super.key, required this.title, required this.url});
 
   @override
   Widget build(BuildContext context) {
